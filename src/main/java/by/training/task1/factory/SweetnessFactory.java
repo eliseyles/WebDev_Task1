@@ -4,10 +4,9 @@ import by.training.task1.entity.*;
 import by.training.task1.exception.IncorrectValueException;
 import by.training.task1.util.Parser;
 
-public class SweetnessFactory {
+public enum SweetnessFactory {
 
-    public SweetnessFactory() {
-    }
+    INSTANCE;
 
     public static Sweetness getSweetnessFromString(String dataSource) {
         Sweetness sweetness;
