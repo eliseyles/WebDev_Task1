@@ -3,9 +3,9 @@ package by.training.task1.entity;
 import java.util.Objects;
 
 public class Sweetness {
-    private double weight;
-    private double cost;
-    private double sugarContent;
+    protected double weight;
+    protected double cost;
+    protected double sugarContent;
 
     private static final double DEFAULT_COST = 1.00;
     private static final double DEFAULT_WEIGHT = 0.01;
