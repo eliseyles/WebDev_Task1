@@ -48,6 +48,11 @@ public enum PresentRepositoryImpl implements PresentRepository {
     }
 
     @Override
+    public Set<Sweetness> getPresent() {
+        return new HashSet(present);
+    }
+
+    @Override
     public Set<Sweetness> query(SweetnessSpecification specification) {
 //        todo think how to fix this
         if (specification != null) {
@@ -55,6 +60,8 @@ public enum PresentRepositoryImpl implements PresentRepository {
         }
         return null;
     }
+
+
 
     private Sweetness findSweetness(Sweetness findedSweetness) {
         for (Sweetness sweetness : present) {

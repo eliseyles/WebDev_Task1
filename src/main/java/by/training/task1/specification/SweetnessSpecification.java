@@ -5,5 +5,5 @@ import by.training.task1.entity.Sweetness;
 import java.util.Set;
 
 public interface SweetnessSpecification {
-    Set specify();
+    Set<Sweetness> specify();
 }

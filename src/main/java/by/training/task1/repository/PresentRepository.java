@@ -14,5 +14,7 @@ public interface PresentRepository {
 
     Sweetness getSweetness(Sweetness sweetness) throws RepositoryException;
 
-    Set query(SweetnessSpecification specification);
+    Set<Sweetness> getPresent();
+
+    Set<Sweetness> query(SweetnessSpecification specification);
 }
