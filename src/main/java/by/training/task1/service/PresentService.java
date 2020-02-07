@@ -112,4 +112,12 @@ public class PresentService {
         employees.set(firstElementIndex, employees.get(secondElementIndex));
         employees.set(secondElementIndex, swap);
     }
+
+    public double getPresentWeight() {
+        double totalWeight = 0;
+        for (Sweetness sweetness : present.getPresent()) {
+            totalWeight += sweetness.getWeight();
+        }
+        return totalWeight;
+    }
 }

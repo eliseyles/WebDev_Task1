@@ -21,21 +21,21 @@ public class SourceStringValidator {
         validateSugarContent(source[2]);
     }
 
-    public static void isNull(Object object) throws IncorrectValueException{
+    private static void isNull(Object object) throws IncorrectValueException{
         if (object == null) {
             logger.warn("Source string is null");
             throw new IncorrectValueException("Value is null");
         }
     }
 
-    public static void validateLength(String[] source) throws IncorrectValueException{
+    private static void validateLength(String[] source) throws IncorrectValueException{
         if (source.length < SWEETNESS_POLES_NUMBER) {
             logger.warn("Incorrect params number");
             throw new IncorrectValueException("Incorrect parameters number");
         }
     }
 
-    public static void validateWeight(String weight) throws IncorrectValueException{
+    private static void validateWeight(String weight) throws IncorrectValueException{
         double value;
         try {
             value = Double.parseDouble(weight);
@@ -50,7 +50,7 @@ public class SourceStringValidator {
         }
     }
 
-    public static void validateSugarContent(String sugarContent) throws IncorrectValueException{
+    private static void validateSugarContent(String sugarContent) throws IncorrectValueException{
         double value;
         try {
             value = Double.parseDouble(sugarContent);
