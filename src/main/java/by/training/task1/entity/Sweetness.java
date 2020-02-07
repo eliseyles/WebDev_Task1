@@ -2,7 +2,7 @@ package by.training.task1.entity;
 
 import java.util.Objects;
 
-public class Sweetness {
+public abstract class Sweetness {
     protected double weight;
     protected double cost;
     protected double sugarContent;
