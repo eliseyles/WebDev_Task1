@@ -12,8 +12,8 @@ public class CaramelCandy extends Sweetness{
         this.flavor = DEFAULT_FLAVOR;
     }
 
-    public CaramelCandy(double weight, double cost, double sugarContent, FlavourType flavor) {
-        super(weight, cost, sugarContent);
+    public CaramelCandy(double weight, double sugarContent, FlavourType flavor) {
+        super(weight, sugarContent);
         this.flavor = flavor;
     }
 
@@ -45,5 +45,14 @@ public class CaramelCandy extends Sweetness{
         int hash = super.hashCode();
         hash = hash * prime + flavor.hashCode();
         return hash;
+    }
+
+    @Override
+    public String toString() {
+        return "CaramelCandy{" +
+                "flavor=" + flavor +
+                ", weight=" + weight +
+                ", sugarContent=" + sugarContent +
+                '}';
     }
 }

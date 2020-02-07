@@ -12,8 +12,8 @@ public class ChocolateCandy extends Sweetness {
         this.chocolateType = DEFAULT_CHOCOLATE_TYPE;
     }
 
-    public ChocolateCandy(double weight, double cost, double sugarContent, ChocolateType chocolateType) {
-        super(weight, cost, sugarContent);
+    public ChocolateCandy(double weight, double sugarContent, ChocolateType chocolateType) {
+        super(weight, sugarContent);
         this.chocolateType = chocolateType;
     }
 
@@ -51,7 +51,6 @@ public class ChocolateCandy extends Sweetness {
     public String toString() {
         return "ChocolateCandy{" +
                 "weight=" + weight +
-                ", cost=" + cost +
                 ", sugarContent=" + sugarContent +
                 "chocolateType=" + chocolateType +
                 '}';
