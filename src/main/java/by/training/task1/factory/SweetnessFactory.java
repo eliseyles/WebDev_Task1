@@ -14,10 +14,6 @@ public enum SweetnessFactory {
 
         if (data.length == 4 || data.length == 5) {
             switch (data[0]) {
-                case "Sweetness":
-                    sweetness = new Sweetness(Double.parseDouble(data[1]), Double.parseDouble(data[2]),
-                            Double.parseDouble(data[3]));
-                    break;
                 case "CaramelCandy":
                     sweetness = new CaramelCandy(Double.parseDouble(data[1]),
                             Double.parseDouble(data[2]), Double.parseDouble(data[3]), FlavourType.valueOf(data[4]));
