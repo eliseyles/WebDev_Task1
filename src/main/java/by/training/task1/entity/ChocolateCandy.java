@@ -50,9 +50,10 @@ public class ChocolateCandy extends Sweetness {
     @Override
     public String toString() {
         return "ChocolateCandy{" +
-                "weight=" + weight +
+                "id=" + id +
+                ", weight=" + weight +
                 ", sugarContent=" + sugarContent +
-                "chocolateType=" + chocolateType +
+                ", chocolateType=" + chocolateType +
                 '}';
     }
 }

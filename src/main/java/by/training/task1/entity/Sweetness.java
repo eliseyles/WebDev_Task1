@@ -3,6 +3,8 @@ package by.training.task1.entity;
 import java.util.Objects;
 
 public abstract class Sweetness {
+    protected static int entityNumber = 0;
+    protected int id;
     protected double weight;
     protected double sugarContent;
 
@@ -10,16 +12,19 @@ public abstract class Sweetness {
     private static final double DEFAULT_SUGAR_CONTENT = 4.5;
 
     public Sweetness() {
+        this.id = ++entityNumber;
         this.weight = DEFAULT_WEIGHT;
         this.sugarContent = DEFAULT_SUGAR_CONTENT;
     }
 
     public Sweetness(double weight, double sugarContent) {
+        this.id = ++entityNumber;
         this.weight = weight;
         this.sugarContent = sugarContent;
     }
 
     public Sweetness(Sweetness sweetness) {
+        this.id = ++entityNumber;
         this.sugarContent = sweetness.sugarContent;
         this.weight = sweetness.weight;
     }
@@ -53,6 +58,7 @@ public abstract class Sweetness {
     public int hashCode() {
         int prime = 31;
         int hash = 1;
+        hash = hash * prime + id;
         hash = hash * prime + Double.hashCode(weight);
         hash = hash * prime + Double.hashCode(sugarContent);
         return hash;
@@ -61,7 +67,8 @@ public abstract class Sweetness {
     @Override
     public String toString() {
         return "Sweetness{" +
-                "weight=" + weight +
+                "id=" + id +
+                ", weight=" + weight +
                 ", sugarContent=" + sugarContent +
                 '}';
     }
