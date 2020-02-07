@@ -10,17 +10,21 @@ import by.training.task1.specification.impl.GetAllCaramelCandySpecification;
 import by.training.task1.specification.impl.GetAllChocolateCandySpecification;
 import by.training.task1.specification.impl.GetSweetnessSugarBetweenValueSpecification;
 import by.training.task1.validation.SweetnessValidator;
+import org.apache.log4j.Logger;
 
 import java.util.*;
 
 public class PresentService {
     PresentRepository present = PresentRepositoryImpl.INSTANCE;
 
+    Logger logger = Logger.getLogger(PresentRepository.class);
+
     public void addSweetness(Sweetness sweetness) throws ServiceException {
         try {
             SweetnessValidator.isNull(sweetness);
             present.addSweetness(sweetness);
         } catch (IncorrectValueException e) {
+            logger.warn("Cannot add sweetness, was finded null");
             throw new ServiceException("Invalid object type");
         } catch (RepositoryException e) {
             throw new ServiceException("Adding was interrupted");
@@ -32,6 +36,7 @@ public class PresentService {
             SweetnessValidator.isNull(sweetness);
             present.deleteSweetness(sweetness);
         } catch (IncorrectValueException e) {
+            logger.warn("Cannot delete sweetness, was finded null");
             throw new ServiceException("Invalid object type");
         } catch (RepositoryException e) {
             throw new ServiceException("Deleting was interrupted");
@@ -43,9 +48,10 @@ public class PresentService {
             SweetnessValidator.isNull(sweetness);
             return present.getSweetness(sweetness);
         } catch (IncorrectValueException e) {
+            logger.warn("Cannot get sweetness, was finded null");
             throw new ServiceException("Invalid object type");
         } catch (RepositoryException e) {
-            throw new ServiceException("Deleting was interrupted");
+            throw new ServiceException("Getting was interrupted");
         }
     }
 

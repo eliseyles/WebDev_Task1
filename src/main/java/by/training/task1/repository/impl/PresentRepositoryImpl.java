@@ -7,6 +7,7 @@ import by.training.task1.exception.RepositoryException;
 import by.training.task1.repository.PresentRepository;
 import by.training.task1.specification.SweetnessSpecification;
 import by.training.task1.validation.SweetnessValidator;
+import org.apache.log4j.Logger;
 
 import java.util.HashSet;
 import java.util.Iterator;
@@ -14,7 +15,7 @@ import java.util.Set;
 
 public enum PresentRepositoryImpl implements PresentRepository {
     INSTANCE;
-    //    todo optional
+    Logger logger = Logger.getLogger(PresentRepositoryImpl.class);
     Set<Sweetness> present = new HashSet<>();
 
     @Override
@@ -23,6 +24,7 @@ public enum PresentRepositoryImpl implements PresentRepository {
             SweetnessValidator.isNull(sweetness);
             present.add(sweetness);
         } catch (IncorrectValueException e) {
+            logger.warn("Object to add is null");
             throw new RepositoryException("Invalid object type");
         }
     }
@@ -33,6 +35,7 @@ public enum PresentRepositoryImpl implements PresentRepository {
             SweetnessValidator.isNull(sweetness);
             present.remove(findSweetness(sweetness));
         } catch (IncorrectValueException e) {
+            logger.warn("Object to delete is null");
             throw new RepositoryException("Invalid object type");
         }
     }
@@ -43,6 +46,7 @@ public enum PresentRepositoryImpl implements PresentRepository {
             SweetnessValidator.isNull(sweetness);
             return findSweetness(sweetness);
         } catch (IncorrectValueException e) {
+            logger.warn("Object to get is null");
             throw new RepositoryException("Invalid object");
         }
     }
