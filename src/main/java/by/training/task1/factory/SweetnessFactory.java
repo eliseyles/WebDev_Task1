@@ -9,7 +9,7 @@ public enum SweetnessFactory {
 
     INSTANCE;
 
-    public Sweetness getSweetnessFromString(String dataSource) {
+    public Sweetness getSweetnessFromString(String dataSource) throws IncorrectValueException{
         Sweetness sweetness;
         String[] data = new Parser().parseSourceToArray(dataSource);
 

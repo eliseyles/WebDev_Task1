@@ -1,6 +1,6 @@
 package by.training.task1.exception;
 
-public class IncorrectValueException extends RuntimeException {
+public class IncorrectValueException extends Exception {
     public IncorrectValueException() {
         super();
     }

@@ -18,19 +18,19 @@ public class SourceStringValidator {
         validateSugarContent(source[2]);
     }
 
-    public static void isNull(Object object) {
+    public static void isNull(Object object) throws IncorrectValueException{
         if (object == null) {
             throw new IncorrectValueException("Value is null");
         }
     }
 
-    public static void validateLength(String[] source) {
+    public static void validateLength(String[] source) throws IncorrectValueException{
         if (source.length < SWEETNESS_POLES_NUMBER) {
             throw new IncorrectValueException("Incorrect parameters number");
         }
     }
 
-    public static void validateWeight(String weight) {
+    public static void validateWeight(String weight) throws IncorrectValueException{
         double value;
         try {
             value = Double.parseDouble(weight);
@@ -43,7 +43,7 @@ public class SourceStringValidator {
         }
     }
 
-    public static void validateSugarContent(String sugarContent) {
+    public static void validateSugarContent(String sugarContent) throws IncorrectValueException{
         double value;
         try {
             value = Double.parseDouble(sugarContent);
@@ -56,12 +56,12 @@ public class SourceStringValidator {
         }
     }
 
-    public static void validateCaramelCandy(String[] source) {
+    public static void validateCaramelCandy(String[] source) throws IncorrectValueException{
         validateSweetness(source);
 
     }
 
-    public static void validateFlavourType(String source) {
+    public static void validateFlavourType(String source) throws IncorrectValueException{
         try {
             FlavourType.valueOf(source);
         } catch (IllegalArgumentException e) {
@@ -69,7 +69,7 @@ public class SourceStringValidator {
         }
     }
 
-    public static void validateChocolateType(String source) {
+    public static void validateChocolateType(String source) throws IncorrectValueException{
         try {
             ChocolateType.valueOf(source);
         } catch (IllegalArgumentException e) {
