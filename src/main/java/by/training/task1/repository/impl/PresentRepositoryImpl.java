@@ -14,11 +14,11 @@ import java.util.Set;
 
 public enum PresentRepositoryImpl implements PresentRepository {
     INSTANCE;
-//    todo optional
+    //    todo optional
     Set<Sweetness> present = new HashSet<>();
 
     @Override
-    public void addSweetness(Sweetness sweetness) throws RepositoryException{
+    public void addSweetness(Sweetness sweetness) throws RepositoryException {
         try {
             SweetnessValidator.isNull(sweetness);
             present.add(sweetness);
@@ -28,7 +28,7 @@ public enum PresentRepositoryImpl implements PresentRepository {
     }
 
     @Override
-    public void deleteSweetness(Sweetness sweetness) throws RepositoryException{
+    public void deleteSweetness(Sweetness sweetness) throws RepositoryException {
         try {
             SweetnessValidator.isNull(sweetness);
             present.remove(findSweetness(sweetness));
@@ -60,8 +60,6 @@ public enum PresentRepositoryImpl implements PresentRepository {
         }
         return null;
     }
-
-
 
     private Sweetness findSweetness(Sweetness findedSweetness) {
         for (Sweetness sweetness : present) {
