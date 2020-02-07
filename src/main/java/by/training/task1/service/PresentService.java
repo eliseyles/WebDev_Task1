@@ -11,7 +11,7 @@ import by.training.task1.specification.impl.GetAllChocolateCandySpecification;
 import by.training.task1.specification.impl.GetSweetnessSugarBetweenValueSpecification;
 import by.training.task1.validation.SweetnessValidator;
 
-import java.util.Set;
+import java.util.*;
 
 public class PresentService {
     PresentRepository present = PresentRepositoryImpl.INSTANCE;
@@ -63,5 +63,47 @@ public class PresentService {
 
     public Set<Sweetness> getSweetnessWithSugarContentBetweenValues(double minValue, double maxValue) {
         return present.query(new GetSweetnessSugarBetweenValueSpecification(minValue, maxValue));
+    }
+
+    public Set<Sweetness> sortPresent(Comparator<Sweetness> comparator) {
+        List<Sweetness> present = new ArrayList<>(this.present.getPresent());
+        quickSort(present, comparator, 0, present.size());
+        return new HashSet<>(present);
+    }
+
+    private void quickSort(List<Sweetness> array, Comparator<Sweetness> comparator, int low, int high) {
+        if (array == null || array.size() == 0)
+            return;
+        if (low >= high)
+            return;
+        int middle = low + (high - low) / 2;
+        Sweetness pivot = array.get(middle);
+        int i = low;
+        int j = high;
+        while (i <= j) {
+            while (comparator.compare(array.get(i), pivot) < 0) {
+                i++;
+            }
+
+            while (comparator.compare(array.get(j), pivot) > 0) {
+                j--;
+            }
+
+            if (i <= j) {
+                swap(array, i, j);
+                i++;
+                j--;
+            }
+        }
+        if (low < j)
+            quickSort(array, comparator, low, j);
+        if (high > i)
+            quickSort(array, comparator, i, high);
+    }
+
+    private void swap(List<Sweetness> employees, int firstElementIndex, int secondElementIndex) {
+        Sweetness swap = employees.get(firstElementIndex);
+        employees.set(firstElementIndex, employees.get(secondElementIndex));
+        employees.set(secondElementIndex, swap);
     }
 }
