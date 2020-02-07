@@ -12,6 +12,8 @@ public enum SweetnessFactory {
         Sweetness sweetness;
         String[] data = new Parser().parseSourceToArray(dataSource);
 
+//todo add validation
+
         if (data.length == 4 || data.length == 5) {
             switch (data[0]) {
                 case "CaramelCandy":

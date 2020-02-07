@@ -3,7 +3,7 @@ package by.training.task1.repository;
 import by.training.task1.entity.Sweetness;
 import by.training.task1.specification.SweetnessSpecification;
 
-import java.util.List;
+import java.util.Set;
 
 public interface PresentRepository {
 
@@ -11,5 +11,5 @@ public interface PresentRepository {
 
     void deleteSweetness(Sweetness sweetness);
 
-    List<? extends Sweetness> query(SweetnessSpecification specification);
+    Set query(SweetnessSpecification specification);
 }
