@@ -3,6 +3,7 @@ package by.training.task1.factory;
 import by.training.task1.entity.*;
 import by.training.task1.exception.IncorrectValueException;
 import by.training.task1.util.Parser;
+import by.training.task1.validation.SourceStringValidator;
 
 public enum SweetnessFactory {
 
@@ -12,24 +13,22 @@ public enum SweetnessFactory {
         Sweetness sweetness;
         String[] data = new Parser().parseSourceToArray(dataSource);
 
-//todo add validation
-
-        if (data.length == 4 || data.length == 5) {
-            switch (data[0]) {
-                case "CaramelCandy":
-                    sweetness = new CaramelCandy(Double.parseDouble(data[1]),
-                            Double.parseDouble(data[2]), Double.parseDouble(data[3]), FlavourType.valueOf(data[4]));
-                    break;
-                case "ChocolateCandy":
-                    sweetness = new ChocolateCandy(Double.parseDouble(data[1]),
-                            Double.parseDouble(data[2]), Double.parseDouble(data[3]), ChocolateType.valueOf(data[4]));
-                    break;
-                default:
-                    throw new IncorrectValueException("Incorrect sweetness type");
-            }
-        } else {
-            throw new IncorrectValueException("Incorrect parametrs number");
+        SourceStringValidator.validateSweetness(data);
+        switch (data[0]) {
+            case "CaramelCandy":
+                SourceStringValidator.validateFlavourType(data[3]);
+                sweetness = new CaramelCandy(Double.parseDouble(data[1]),
+                        Double.parseDouble(data[2]), FlavourType.valueOf(data[3]));
+                break;
+            case "ChocolateCandy":
+                SourceStringValidator.validateChocolateType(data[3]);
+                sweetness = new ChocolateCandy(Double.parseDouble(data[1]),
+                        Double.parseDouble(data[2]), ChocolateType.valueOf(data[3]));
+                break;
+            default:
+                throw new IncorrectValueException("Incorrect sweetness type");
         }
+
         return sweetness;
     }
 
