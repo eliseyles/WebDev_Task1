@@ -9,7 +9,7 @@ public enum SweetnessFactory {
 
     INSTANCE;
 
-    public static Sweetness getSweetnessFromString(String dataSource) {
+    public Sweetness getSweetnessFromString(String dataSource) {
         Sweetness sweetness;
         String[] data = new Parser().parseSourceToArray(dataSource);
 
